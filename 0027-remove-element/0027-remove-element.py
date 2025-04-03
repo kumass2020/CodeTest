@@ -16,7 +16,7 @@ class Solution:
         j = N-1
         
         while i < j:
-            while j >= 0 and nums[j] == '_':
+            while j > i and nums[j] == '_':
                 j -= 1
 
             # print(nums, i, j)
