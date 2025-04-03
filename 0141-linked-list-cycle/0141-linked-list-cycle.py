@@ -7,7 +7,8 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         node = head
-        visited = []
+        # visited = []
+        visited = set()
 
         if not node:
             return False
@@ -16,7 +17,8 @@ class Solution:
             if node in visited:
                 return True
     
-            visited.append(node)
+            # visited.append(node)
+            visited.add(node)
 
             if node.next:
                 node = node.next
