@@ -3,33 +3,42 @@ class Solution:
         N = len(nums)
         k = 0
         for i in range(N):
-            if nums[i] == val:
-                # nums[i] = -1
-                nums[i] = '_'
+            if nums[i] != val:
+                nums[k] = nums[i]
                 k += 1
         
-        # nums.sort(reverse=True)
-        # print(nums)
-        # return N-k
+        return k
 
-        i = 0
-        j = N-1
+        # N = len(nums)
+        # k = 0
+        # for i in range(N):
+        #     if nums[i] == val:
+        #         # nums[i] = -1
+        #         nums[i] = '_'
+        #         k += 1
         
-        while i < j:
-            while j > i and nums[j] == '_':
-                j -= 1
+        # # nums.sort(reverse=True)
+        # # print(nums)
+        # # return N-k
 
-            # print(nums, i, j)
+        # i = 0
+        # j = N-1
+        
+        # while i < j:
+        #     while j > i and nums[j] == '_':
+        #         j -= 1
+
+        #     # print(nums, i, j)
             
-            if nums[i] == '_':
-                nums[i] = nums[j]
-                nums[j] = '_'
+        #     if nums[i] == '_':
+        #         nums[i] = nums[j]
+        #         nums[j] = '_'
             
-            # if i == j:
-            #     return N-k
+        #     # if i == j:
+        #     #     return N-k
 
-            i += 1
+        #     i += 1
 
 
 
-        return N-k
+        # return N-k
