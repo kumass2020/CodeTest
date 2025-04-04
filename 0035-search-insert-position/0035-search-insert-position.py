@@ -17,11 +17,11 @@ class Solution:
             else:
                 left = mid+1
 
-        if len(nums) == 1:
-            if nums[0] >= target:
-                return 0
-            else:
-                return 1
+        # if len(nums) == 1:
+        #     if nums[0] >= target:
+        #         return 0
+        #     else:
+        #         return 1
 
         print(mid, val, left, right)
         return left
