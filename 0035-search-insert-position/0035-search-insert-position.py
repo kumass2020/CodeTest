@@ -3,8 +3,8 @@ class Solution:
         left = 0
         right = len(nums)-1
 
-        if nums[0] >= target:
-            return 0
+        # if nums[0] >= target:
+        #     return 0
         
         while left <= right:
             mid = (left + right) // 2
@@ -23,7 +23,7 @@ class Solution:
         #     else:
         #         return 1
 
-        print(mid, val, left, right)
+        # print(mid, val, left, right)
         return left
             
         
