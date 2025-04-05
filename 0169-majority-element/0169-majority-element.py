@@ -9,7 +9,18 @@ class Solution:
         
         # return nums2[-1]
 
-        # Sorting
-        nums.sort()
-        return nums[len(nums)//2]
+        # # Sorting
+        # nums.sort()
+        # return nums[len(nums)//2]
+
+        # Boyer-Moore
+        count = 0
+        candidate = None
+
+        for num in nums:
+            if not count:
+                candidate = num
+            count += 1 if num == candidate else -1
+
+        return candidate
             
