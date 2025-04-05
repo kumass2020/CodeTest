@@ -7,16 +7,20 @@ class Solution:
 
         # DFS
         answer = []
+        used = [False] * len(nums)
 
         def dfs(idx, perm):
             if len(perm) == len(nums):
                 answer.append(perm[:])
 
             for i in range(len(nums)):
-                if nums[i] not in perm:
+                # if nums[i] not in perm:
+                if not used[i]:     # Use boolean array for checking
+                    used[i] = True
                     perm.append(nums[i])
                     dfs(i+1, perm)
                     perm.pop()
+                    used[i] = False
 
         dfs(0, [])
         return answer
