@@ -8,15 +8,15 @@ class Solution:
         while j < len(nums):
             if nums[j-1] == nums[j]:
                 counter += 1
-                if counter >= 2:
-                    j += 1
-                    continue
             else:
                 counter = 0
-                
-            nums[i] = nums[j]
-            i += 1
-            j += 1
+
+            if counter >= 2:
+                j += 1
+            else:
+                nums[i] = nums[j]
+                i += 1
+                j += 1
         
         return i
 
