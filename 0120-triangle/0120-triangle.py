@@ -25,20 +25,29 @@ class Solution:
 
         # return dp[-1]
             
-        triangle_sum = [[0] * i for i in range(1, len(triangle)+1)]
-        triangle_sum[0][0] = triangle[0][0]
+        # triangle_sum = [[0] * i for i in range(1, len(triangle)+1)]
+        # triangle_sum[0][0] = triangle[0][0]
 
-        for i in range(1, len(triangle)):
-            for j in range(len(triangle[i])):
-                # print(i, j)
-                if j == 0:
-                    triangle_sum[i][j] = triangle_sum[i-1][j]
-                elif j == len(triangle[i])-1:
-                    triangle_sum[i][j] = triangle_sum[i-1][j-1]
-                else:
-                    triangle_sum[i][j] = min(triangle_sum[i-1][j-1], triangle_sum[i-1][j])
-                triangle_sum[i][j] += triangle[i][j]
+        # for i in range(1, len(triangle)):
+        #     for j in range(len(triangle[i])):
+        #         # print(i, j)
+        #         if j == 0:
+        #             triangle_sum[i][j] = triangle_sum[i-1][j]
+        #         elif j == len(triangle[i])-1:
+        #             triangle_sum[i][j] = triangle_sum[i-1][j-1]
+        #         else:
+        #             triangle_sum[i][j] = min(triangle_sum[i-1][j-1], triangle_sum[i-1][j])
+        #         triangle_sum[i][j] += triangle[i][j]
                 
-        return min(triangle_sum[-1])
+        # return min(triangle_sum[-1])
+
+        R = len(triangle)
+        memo = triangle[R-1]
+
+        for i in range(R-2, -1, -1):
+            for j in range(len(triangle[i])):
+                memo[j] = triangle[i][j] + min(memo[j], memo[j+1])
+        
+        return memo[0]
 
             
