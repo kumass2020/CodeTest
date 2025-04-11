@@ -30,7 +30,7 @@ class Solution:
 
         for i in range(1, len(triangle)):
             for j in range(len(triangle[i])):
-                print(i, j)
+                # print(i, j)
                 if j == 0:
                     triangle_sum[i][j] = triangle_sum[i-1][j]
                 elif j == len(triangle[i])-1:
