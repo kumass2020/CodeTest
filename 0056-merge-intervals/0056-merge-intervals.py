@@ -12,15 +12,16 @@ class Solution:
                 continue
 
             if i > 0:
+                prev = answer[-1]
                 # print(intervals[i-1], intv)
                 if intv[1] <= intervals[i-1][1]:
                     continue
 
-                if intv[0] <= answer[-1][1]:
+                if intv[0] <= prev[1]:
                     # print(min(answer[-1][0], intv[0]))
                     # start = min(answer[-1][0], intv[0])
-                    start = answer[-1][0]
-                    end = max(answer[-1][1], intv[1])
+                    start = prev[0]
+                    end = max(prev[1], intv[1])
                     answer[-1] = [start, end]
                 else:
                     answer.append(intv)
