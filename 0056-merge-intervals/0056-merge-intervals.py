@@ -1,7 +1,9 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         
-        intervals.sort(key=lambda x: (x[0], x[1]))
+        # intervals.sort(key=lambda x: (x[0], x[1]))
+        intervals.sort(key=lambda x: x[0])
+
         # print(intervals)
         answer = []
         for i, intv in enumerate(intervals):
@@ -16,7 +18,8 @@ class Solution:
 
                 if intv[0] <= answer[-1][1]:
                     # print(min(answer[-1][0], intv[0]))
-                    start = min(answer[-1][0], intv[0])
+                    # start = min(answer[-1][0], intv[0])
+                    start = answer[-1][0]
                     end = max(answer[-1][1], intv[1])
                     answer[-1] = [start, end]
                 else:
