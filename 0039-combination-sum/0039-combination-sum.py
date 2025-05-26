@@ -16,9 +16,12 @@ class Solution:
         def dfs(comb, total):
             nonlocal answer
             # print(comb)
-            if total == target and tuple(sorted(comb)) not in answer_set:
-                answer.append(comb[:])
-                answer_set.add(tuple(sorted(comb)))
+            if total == target:
+                comb_key = tuple(sorted(comb))
+                if comb_key not in answer_set:
+                    answer.append(comb[:])
+                    answer_set.add(comb_key)
+                return
             elif total > target:
                 return
             
