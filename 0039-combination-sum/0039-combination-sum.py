@@ -1,0 +1,34 @@
+# from itertools import combinations
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        # combs = combinations(candidates)
+        # answer = []
+        # for comb in combs:
+        #     if sum(comb) == Target:
+        #         answer.append(comb)
+        
+        # return answer
+
+        answer = []
+        answer_set = set()
+        # candidates.sort()
+
+        def dfs(comb, idx):
+            nonlocal answer
+            # print(comb)
+            if sum(comb) == target and tuple(sorted(comb)) not in answer_set:
+                answer.append(comb[:])
+                answer_set.add(tuple(sorted(comb)))
+            elif sum(comb) > target:
+                return
+            
+            new_comb = comb[:]
+            for i in range(len(candidates)):
+                new_comb.append(candidates[i])
+                dfs(new_comb, idx+1)
+                new_comb.pop()
+    
+        dfs([], 0)
+        return answer
+
+
