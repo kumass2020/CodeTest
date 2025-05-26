@@ -13,19 +13,19 @@ class Solution:
         answer_set = set()
         # candidates.sort()
 
-        def dfs(comb, idx):
+        def dfs(comb, total):
             nonlocal answer
             # print(comb)
-            if sum(comb) == target and tuple(sorted(comb)) not in answer_set:
+            if total == target and tuple(sorted(comb)) not in answer_set:
                 answer.append(comb[:])
                 answer_set.add(tuple(sorted(comb)))
-            elif sum(comb) > target:
+            elif total > target:
                 return
             
             new_comb = comb[:]
             for i in range(len(candidates)):
                 new_comb.append(candidates[i])
-                dfs(new_comb, idx+1)
+                dfs(new_comb, total+candidates[i])
                 new_comb.pop()
     
         dfs([], 0)
