@@ -12,21 +12,35 @@ class Solution:
         from collections import deque
         
         q = deque()
-        q.append((root, 0))
+        q.append((root))
 
         answer = []
 
         while q:
-            node, level = q.popleft()
+            level_size = len(q)
+            temp = []
 
-            if len(answer) == level+1:
-                answer[level].append(node.val)
-            else:
-                answer.append([node.val])
+            # temp.append(node.val)
 
-            if node.left:
-                q.append((node.left, level+1))
-            if node.right:
-                q.append((node.right, level+1))
+            # if not q:
+            #     answer.append(temp)
+            #     temp = []
+
+            # if len(answer) == level+1:
+            #     answer[level].append(node.val)
+            # else:
+            #     answer.append([node.val])
+
+            for i in range(level_size):
+                node = q.popleft()
+
+                temp.append(node.val)
+
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+
+            answer.append(temp)
 
         return answer
