@@ -6,18 +6,37 @@ class Solution:
         M = len(matrix)
         N = len(matrix[0])
 
-        zeros = []
         for i in range(M):
             for j in range(N):
                 if matrix[i][j] == 0:
-                    zeros.append((i, j))
+                    for m in range(M):
+                        if matrix[m][j] == 0 or m <= i:
+                            matrix[m][j] = 0
+                        else:
+                            matrix[m][j] = float('inf')
 
-        for i, j in zeros:
-            for m in range(M):
-                matrix[m][j] = 0
+                    for n in range(N):
+                        if matrix[i][n] == 0 or n <= j:
+                            matrix[i][n] = 0
+                        else:
+                            matrix[i][n] = float('inf')
+                if matrix[i][j] == float('inf'):
+                    matrix[i][j] = 0
+                    
+                    
 
-            for n in range(N):
-                matrix[i][n] = 0
+        # zeros = []
+        # for i in range(M):
+        #     for j in range(N):
+        #         if matrix[i][j] == 0:
+        #             zeros.append((i, j))
+
+        # for i, j in zeros:
+        #     for m in range(M):
+        #         matrix[m][j] = 0
+
+        #     for n in range(N):
+        #         matrix[i][n] = 0
                 
         # visited = [[False] * N for _ in range(M)]
 
